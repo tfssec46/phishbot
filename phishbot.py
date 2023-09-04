@@ -25,8 +25,9 @@ def initialize():
 
 def single_phish(email):
     logo_gen()
-    recipient = input(colors.GREEN + 'Enter destination email address:\n' + colors.ENDC)
-    print(recipient)
+    print(colors.GREEN + "\nSending Phishbot email to " + email)
+    #recipient = input(colors.GREEN + 'Enter destination email address:\n' + colors.ENDC)
+    #print(recipient)
 
 def multi_phish(file):
     logo_gen()
