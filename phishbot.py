@@ -8,6 +8,7 @@ from email.mime.base import MIMEBase
 from email import encoders
 from email.utils import formataddr
 import time
+from datetime import datetime
 
 class colors:
     RED = '\033[31m'
@@ -74,6 +75,11 @@ def single_phish(email):
     print(colors.GREEN + "<>< <><  Successfully sent Phishbot email to " + email_to + "  <>< <>< \n" + colors.ENDC)
     mail_server.sendmail(email_from, email_to, text)
     mail_server.quit()
+    logdate = (datetime.now()).strftime("%m/%d/%Y %H:%M:%S")
+    log_output = logdate + " sender=" + email_from + " recipient=" + email_to + " subject=" + subject + " attachment= phishurl=" + t + ".html body=" + body
+    l = open("/opt/phishbot/log/phishbot.log", "a")
+    l.write(log_output)
+    l.close
 
 def multi_phish(file):
     logo_gen()
