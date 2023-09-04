@@ -92,7 +92,7 @@ def logo_gen():
     print(colors.YELLOW + "                /_/ ")
 
 def get_cred():
-    file = open("/opt/phishbot/auth/.cred","r")
+    file = open("/opt/phishbot/auth/.gmcred","r")
     lines = file.readlines()
     user = lines[0].rstrip("\n")
     password = lines[1].rstrip("\n")
