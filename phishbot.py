@@ -58,12 +58,12 @@ def single_phish(email):
     ##end of attachment section
 
     text = msg.as_string()
-    print(colors.GREEN + "\n Connecting to mail server ... \n" + colors.ENDC)
+    print(colors.GREEN + "Connecting to mail server ... \n" + colors.ENDC)
     mail_server = smtplib.SMTP(smtp_server, smtp_port)
     mail_server.starttls()
     mail_server.login(email_from, pswd)
-    print(colors.GREEN + "\n Successfully connected to mail server ... \n" + colors.ENDC)
-    print(colors.GREEN + "\n <>< <><  Sending Phishbot email to " + email_to + "  <>< <>< \n" + colors.ENDC)
+    print(colors.GREEN + "Successfully connected to mail server ... \n" + colors.ENDC)
+    print(colors.GREEN + "<>< <><  Successfully sent Phishbot email to " + email_to + "  <>< <>< \n" + colors.ENDC)
     mail_server.sendmail(email_from, email_to, text)
     mail_server.quit()
 
