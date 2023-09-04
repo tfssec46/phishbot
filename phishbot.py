@@ -26,6 +26,9 @@ def initialize():
 def single_phish(email):
     logo_gen()
     print(colors.GREEN + "\n <>< <><  Sending Phishbot email to " + email + "  <>< <>< \n" + colors.ENDC)
+    user,password = get_cred()
+    print(user)
+    print(password)
 
 def multi_phish(file):
     logo_gen()
@@ -42,6 +45,13 @@ def logo_gen():
     print(colors.YELLOW + "\\__/\\   /o \\/     / /_/ / / / / (__  ) / / / /_/ / /_/ / /_  ")
     print(colors.YELLOW + "        \\__/\\    / .___/_/ /_/_/____/_/ /_/_.___/\\____/\\__/  ")
     print(colors.YELLOW + "                /_/ ")
+
+def get_cred():
+    file = open(/opt/phishbot/auth/.cred)
+    lines = file.readlines()
+    user = lines[0].rstrip("\n")
+    password = lines[1].rstrip("\n")
+    return(user,password)
 
 email,file,report = initialize()
 if email:
