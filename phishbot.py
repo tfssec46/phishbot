@@ -27,8 +27,6 @@ def single_phish(email):
     logo_gen()
     print(colors.GREEN + "\n <>< <><  Sending Phishbot email to " + email + "  <>< <>< \n" + colors.ENDC)
     user,password = get_cred()
-    print(user)
-    print(password)
 
 def multi_phish(file):
     logo_gen()
