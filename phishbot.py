@@ -1,6 +1,12 @@
 #!/usr/bin/python3
 import argparse
 import sys
+import smtplib
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
+from email.mime.base import MIMEBase
+from email import encoders
+from email.utils import formataddr
 
 class colors:
     RED = '\033[31m'
@@ -27,6 +33,39 @@ def single_phish(email):
     logo_gen()
     print(colors.GREEN + "\n <>< <><  Sending Phishbot email to " + email + "  <>< <>< \n" + colors.ENDC)
     user,password = get_cred()
+    smtp_port = 587
+    smtp_server = "smtp.gmail.com"
+    email_from = user
+    email_to = email
+    pswd = password
+    subject = "Email Test #1!"
+    body = "<h1>This is the Body of Email</h1>"
+
+    msg = MIMEMultipart()
+    msg['From'] = formataddr(('your best friend', email_from))
+    msg['To'] = email_to
+    msg['Subject'] = subject
+    msg.attach(MIMEText(body, 'html'))
+
+    ##uncomment below section if attachment required
+    #filename = "/Users/radspyder/Downloads/spider.png"
+    #attachment = open(filename, 'rb')
+    #attachment_package = MIMEBase('application', 'octet-stream')
+    #attachment_package.set_payload((attachment).read())
+    #encoders.encode_base64(attachment_package)
+    #attachment_package.add_header('Content-Disposition', "attachment; filename= " + filename)
+    #msg.attach(attachment_package)
+    ##end of attachment section
+
+    text = msg.as_string()
+    print(colors.GREEN + "\n Connecting to mail server ... \n" + colors.ENDC)
+    mail_server = smtplib.SMTP(smtp_server, smtp_port)
+    mail_server.starttls()
+    mail_server.login(email_from, pswd)
+    print(colors.GREEN + "\n Successfully connected to mail server ... \n" + colors.ENDC)
+    print(colors.GREEN + "\n <>< <><  Sending Phishbot email to " + email_to + "  <>< <>< \n" + colors.ENDC)
+    mail_server.sendmail(email_from, email_to, text)
+    mail_server.quit()
 
 def multi_phish(file):
     logo_gen()
