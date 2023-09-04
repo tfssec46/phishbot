@@ -76,9 +76,7 @@ def single_phish(email):
     mail_server.sendmail(email_from, email_to, text)
     mail_server.quit()
     logdate = (datetime.now()).strftime("%m/%d/%Y %H:%M:%S")
-    print(logdate)
     log_output = logdate + " sender=" + email_from + " recipient=" + email_to + " subject=" + subject + " attachment= phishurl=" + t + ".html body=" + body
-    print(log_output)
     l = open("/opt/phishbot/log/phishbot.log", "a")
     l.write(log_output)
     l.close
