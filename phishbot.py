@@ -47,7 +47,7 @@ def single_phish(email):
     body = '<h1>This is the Body of Email</h1><br />' \
            '<a href="http://3.19.16.86/'+t+'.html">free offer</a><br />' \
            '<body>John Doe<br />' \
-           '<font_color="red"><b>Spyder Financial Services</b><br />'
+           '<style="color: #FF0000;"><b>Spyder Financial Services</b><br />'
 
     msg = MIMEMultipart()
     msg['From'] = formataddr(('your best friend', email_from))
