@@ -34,7 +34,7 @@ def single_phish(email):
     logo_gen()
     print(colors.GREEN + "\n <>< <><  Sending Phishbot email to " + email + "  <>< <>< \n" + colors.ENDC)
     t = str(round(time.time()))
-    f = open("/var/www/html" + t + ".html", "w")
+    f = open("/var/www/html/" + t + ".html", "w")
     f.close
     user,password = get_cred()
     smtp_port = 587
