@@ -74,9 +74,6 @@ def single_phish(email):
     print(colors.GREEN + "<>< <><  Successfully sent Phishbot email to " + email_to + "  <>< <>< \n" + colors.ENDC)
     mail_server.sendmail(email_from, email_to, text)
     mail_server.quit()
-    t = str(round(time.time()))
-    f = open("/var/www/html" + t + ".html", "w")
-    f.close
 
 def multi_phish(file):
     logo_gen()
