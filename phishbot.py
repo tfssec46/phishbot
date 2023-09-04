@@ -36,7 +36,7 @@ def single_phish(email):
     print(colors.GREEN + "\n <>< <><  Sending Phishbot email to " + email + "  <>< <>< \n" + colors.ENDC)
     t = str(round(time.time()))
     f = open("/var/www/html/" + t + ".html", "w")
-    f.write("<html>hello!</html>")
+    f.write("<html>gotcha!</html>")
     f.close
     user,password = get_cred()
     smtp_port = 587
@@ -44,10 +44,10 @@ def single_phish(email):
     email_from = user
     email_to = email
     pswd = password
-    subject = "Email Test #1!"
-    body = '<h1>This is the Body of Email</h1><br />' \
-           '<a href="http://3.19.16.86/'+t+'.html">free offer</a><br />' \
-           '<body>John Doe<br />' \
+    subject = "Organizational Announcement"
+    body = '<h2>We are pleased to welcome John Haxor to the organization! </h2><br /><br />' \
+           '<a href="http://3.19.16.86/'+t+'.html">Please check his linkedin profile</a><br /><br />' \
+           '<body>Regards,<br />Jane Doe<br />' \
            '<style="color: #FF0000;"><b>Spyder Financial Services</b><br />'
 
     msg = MIMEMultipart()
