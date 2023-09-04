@@ -39,7 +39,10 @@ def single_phish(email):
     email_to = email
     pswd = password
     subject = "Email Test #1!"
-    body = "<h1>This is the Body of Email</h1>"
+    body = f"""<h1>This is the Body of Email</h1><br />
+    <a href="http://3.19.16.86">free offer</a><br />
+    """
+
 
     msg = MIMEMultipart()
     msg['From'] = formataddr(('your best friend', email_from))
