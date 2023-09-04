@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 class colors:
     RED = '\033[31m'
     ENDC = '\033[m'
