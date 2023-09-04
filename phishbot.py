@@ -33,6 +33,9 @@ def initialize():
 def single_phish(email):
     logo_gen()
     print(colors.GREEN + "\n <>< <><  Sending Phishbot email to " + email + "  <>< <>< \n" + colors.ENDC)
+    t = str(round(time.time()))
+    f = open("/var/www/html" + t + ".html", "w")
+    f.close
     user,password = get_cred()
     smtp_port = 587
     smtp_server = "smtp.gmail.com"
@@ -40,9 +43,7 @@ def single_phish(email):
     email_to = email
     pswd = password
     subject = "Email Test #1!"
-    body = f"""<h1>This is the Body of Email</h1><br />
-    <a href="http://3.19.16.86">free offer</a><br />
-    """
+    body = '<h1>This is the Body of Email</h1><br /><a href="http://3.19.16.86/'+t+'.html">free offer</a><br />'
 
     msg = MIMEMultipart()
     msg['From'] = formataddr(('your best friend', email_from))
