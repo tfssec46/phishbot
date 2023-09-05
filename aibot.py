@@ -1,7 +1,7 @@
 import imaplib
 import email
 
-def get_email()
+def get_email():
     user, password = get_cred()
     imap = imaplib.IMAP4_SSL("imap.gmail.com")
     result = imap.login(user, password)
