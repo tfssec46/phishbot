@@ -37,36 +37,7 @@ def single_phish(email):
     url = create_url()
     email_from, email_to, subject, url, body = send_email(user,email,mail_server,url)
     create_log(email_from, email_to, subject, url, body)
-    #print(colors.GREEN + "\n <>< <><  Sending Phishbot email to " + email + "  <>< <>< \n" + colors.ENDC)
-    #email_from = user
-    #email_to = email
-    #subject = "Organizational Announcement"
-    #body = '<h2>We are pleased to welcome John Haxor to the organization! </h2><br /><br />' \
-    #       '<a href="' + url + '">Please check his linkedin profile</a><br /><br />' \
-    #       '<body>Regards,<br />Jane Doe<br />' \
-    #       '<style="color: #FF0000;"><b>Spyder Financial Services</b><br />'
-
-    #msg = MIMEMultipart()
-    #msg['From'] = formataddr(('John Marshal', email_from))
-    #msg['To'] = email_to
-    #msg['Subject'] = subject
-    #msg.attach(MIMEText(body, 'html'))
-
-    ##uncomment below section if attachment required
-    #filename = "/Users/radspyder/Downloads/spider.png"
-    #attachment = open(filename, 'rb')
-    #attachment_package = MIMEBase('application', 'octet-stream')
-    #attachment_package.set_payload((attachment).read())
-    #encoders.encode_base64(attachment_package)
-    #attachment_package.add_header('Content-Disposition', "attachment; filename= " + filename)
-    #msg.attach(attachment_package)
-    ##end of attachment section
-
-    #text = msg.as_string()
-    #print(colors.GREEN + "<>< <><  Successfully sent Phishbot email to " + email_to + "  <>< <>< \n" + colors.ENDC)
-    #mail_server.sendmail(email_from, email_to, text)
     mail_server.quit()
-    #create_log(email_from, email_to, subject, url, body)
 
 def multi_phish(file):
     logo_gen()
@@ -130,7 +101,6 @@ def send_email(user,email,mail_server,url):
     print(colors.GREEN + "<>< <><  Successfully sent Phishbot email to " + email_to + "  <>< <>< \n" + colors.ENDC)
     mail_server.sendmail(email_from, email_to, text)
     return(email_from, email_to, subject, url, body)
-    #create_log(email_from, email_to, subject, url, body)
 
 def create_url():
     print(colors.GREEN + "Creating unique url for target ... \n" + colors.ENDC)
