@@ -35,20 +35,21 @@ def single_phish(email):
     logo_gen()
     user,mail_server = mail_server_connect()
     url = create_url()
-    print(colors.GREEN + "\n <>< <><  Sending Phishbot email to " + email + "  <>< <>< \n" + colors.ENDC)
-    email_from = user
-    email_to = email
-    subject = "Organizational Announcement"
-    body = '<h2>We are pleased to welcome John Haxor to the organization! </h2><br /><br />' \
-           '<a href="' + url + '">Please check his linkedin profile</a><br /><br />' \
-           '<body>Regards,<br />Jane Doe<br />' \
-           '<style="color: #FF0000;"><b>Spyder Financial Services</b><br />'
+    send_email(user,email,mail_server)
+    #print(colors.GREEN + "\n <>< <><  Sending Phishbot email to " + email + "  <>< <>< \n" + colors.ENDC)
+    #email_from = user
+    #email_to = email
+    #subject = "Organizational Announcement"
+    #body = '<h2>We are pleased to welcome John Haxor to the organization! </h2><br /><br />' \
+    #       '<a href="' + url + '">Please check his linkedin profile</a><br /><br />' \
+    #       '<body>Regards,<br />Jane Doe<br />' \
+    #       '<style="color: #FF0000;"><b>Spyder Financial Services</b><br />'
 
-    msg = MIMEMultipart()
-    msg['From'] = formataddr(('John Marshal', email_from))
-    msg['To'] = email_to
-    msg['Subject'] = subject
-    msg.attach(MIMEText(body, 'html'))
+    #msg = MIMEMultipart()
+    #msg['From'] = formataddr(('John Marshal', email_from))
+    #msg['To'] = email_to
+    #msg['Subject'] = subject
+    #msg.attach(MIMEText(body, 'html'))
 
     ##uncomment below section if attachment required
     #filename = "/Users/radspyder/Downloads/spider.png"
@@ -60,16 +61,11 @@ def single_phish(email):
     #msg.attach(attachment_package)
     ##end of attachment section
 
-    text = msg.as_string()
-    print(colors.GREEN + "<>< <><  Successfully sent Phishbot email to " + email_to + "  <>< <>< \n" + colors.ENDC)
-    mail_server.sendmail(email_from, email_to, text)
+    #text = msg.as_string()
+    #print(colors.GREEN + "<>< <><  Successfully sent Phishbot email to " + email_to + "  <>< <>< \n" + colors.ENDC)
+    #mail_server.sendmail(email_from, email_to, text)
     mail_server.quit()
-    create_log(email_from, email_to, subject, url, body)
-    #logdate = (datetime.now()).strftime("%m/%d/%Y %H:%M:%S")
-    #log_output = logdate + " sender=" + email_from + " recipient=" + email_to + " subject=" + subject + " attachment= phishurl=" + url + " body=" + body
-    #l = open("/opt/phishbot/log/phishbot.log", "a")
-    #l.write(log_output)
-    #l.close
+    #create_log(email_from, email_to, subject, url, body)
 
 def multi_phish(file):
     logo_gen()
@@ -106,8 +102,33 @@ def mail_server_connect():
     print(colors.GREEN + "Connected to mail server ... \n" + colors.ENDC)
     return(user,mail_server)
 
-def send_mail():
-    print("hello world")
+def send_mail(user,email,mail_server):
+    print(colors.GREEN + "\n <>< <><  Sending Phishbot email to " + email + "  <>< <>< \n" + colors.ENDC)
+    email_from = user
+    email_to = email
+    subject = "Organizational Announcement"
+    body = '<h2>We are pleased to welcome John Haxor to the organization! </h2><br /><br />' \
+           '<a href="' + url + '">Please check his linkedin profile</a><br /><br />' \
+           '<body>Regards,<br />Jane Doe<br />' \
+           '<style="color: #FF0000;"><b>Spyder Financial Services</b><br />'
+    msg = MIMEMultipart()
+    msg['From'] = formataddr(('John Marshal', email_from))
+    msg['To'] = email_to
+    msg['Subject'] = subject
+    msg.attach(MIMEText(body, 'html'))
+    ##uncomment below section if attachment required
+    #filename = "/Users/radspyder/Downloads/spider.png"
+    #attachment = open(filename, 'rb')
+    #attachment_package = MIMEBase('application', 'octet-stream')
+    #attachment_package.set_payload((attachment).read())
+    #encoders.encode_base64(attachment_package)
+    #attachment_package.add_header('Content-Disposition', "attachment; filename= " + filename)
+    #msg.attach(attachment_package)
+    ##end of attachment section
+    text = msg.as_string()
+    print(colors.GREEN + "<>< <><  Successfully sent Phishbot email to " + email_to + "  <>< <>< \n" + colors.ENDC)
+    mail_server.sendmail(email_from, email_to, text)
+    create_log(email_from, email_to, subject, url, body)
 
 def create_url():
     print(colors.GREEN + "Creating unique url for target ... \n" + colors.ENDC)
