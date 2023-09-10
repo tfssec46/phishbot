@@ -76,7 +76,7 @@ def mail_server_connect():
     smtp_port = 587
     smtp_server = "smtp.gmail.com"
     pswd = password
-    print(colors.GREEN + "Connecting to mail server ... \n" + colors.ENDC)
+    print(colors.GREEN + "Connecting to mail server ... " + colors.ENDC)
     mail_server = smtplib.SMTP(smtp_server, smtp_port)
     mail_server.starttls()
     mail_server.login(user, pswd)
@@ -112,7 +112,7 @@ def send_email(user,email,mail_server,url):
     return(email_from, email_to, subject, url, body)
 
 def create_url():
-    print(colors.GREEN + "Creating unique url for target ... \n" + colors.ENDC)
+    print(colors.GREEN + "Creating unique url for target ... " + colors.ENDC)
     t = str(round(time.time()))
     f = open("/var/www/html/" + t + ".html", "w")
     f.write("<html>gotcha!</html>")
