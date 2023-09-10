@@ -41,12 +41,17 @@ def single_phish(email):
 
 def multi_phish(file):
     logo_gen()
-    print(file)
+    print(colors.GREEN + "Starting multi target phish using file " + file + " \n" + colors.ENDC)
+    user,mail_server = mail_server_connect()
     email_list = open(file, 'r')
-    lines = email_list.readlines()
-    for line in lines:
-        print(line)
-    #print("sending multiple emails")
+    emails = email_list.readlines()
+    for email in emails:
+        url = create_url()
+        email_from, email_to, subject, url, body = send_email(user, email, mail_server, url)
+        create_log(email_from, email_to, subject, url, body)
+        time.sleep(1)
+    mail_server.quit()
+    email_list.close()
 
 def create_report():
     print("generating report")
