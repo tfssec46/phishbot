@@ -34,21 +34,21 @@ def initialize():
 def single_phish(email):
     logo_gen()
     user,mail_server = mail_server_connect()
-    print(user)
-    print(mail_server)
-    mail_server.quit()
-    sys.exit(0)
+    #print(user)
+    #print(mail_server)
+    #mail_server.quit()
+    #sys.exit(0)
     print(colors.GREEN + "\n <>< <><  Sending Phishbot email to " + email + "  <>< <>< \n" + colors.ENDC)
     t = str(round(time.time()))
     f = open("/var/www/html/" + t + ".html", "w")
     f.write("<html>gotcha!</html>")
     f.close
-    user,password = get_cred()
-    smtp_port = 587
-    smtp_server = "smtp.gmail.com"
-    email_from = user
+    #user,password = get_cred()
+    #smtp_port = 587
+    #smtp_server = "smtp.gmail.com"
+    #email_from = user
     email_to = email
-    pswd = password
+    #pswd = password
     subject = "Organizational Announcement"
     body = '<h2>We are pleased to welcome John Haxor to the organization! </h2><br /><br />' \
            '<a href="http://3.19.16.86/'+t+'.html">Please check his linkedin profile</a><br /><br />' \
@@ -72,11 +72,11 @@ def single_phish(email):
     ##end of attachment section
 
     text = msg.as_string()
-    print(colors.GREEN + "Connecting to mail server ... \n" + colors.ENDC)
-    mail_server = smtplib.SMTP(smtp_server, smtp_port)
-    mail_server.starttls()
-    mail_server.login(email_from, pswd)
-    print(colors.GREEN + "Connected to mail server ... \n" + colors.ENDC)
+    #print(colors.GREEN + "Connecting to mail server ... \n" + colors.ENDC)
+    #mail_server = smtplib.SMTP(smtp_server, smtp_port)
+    #mail_server.starttls()
+    #mail_server.login(email_from, pswd)
+    #print(colors.GREEN + "Connected to mail server ... \n" + colors.ENDC)
     print(colors.GREEN + "<>< <><  Successfully sent Phishbot email to " + email_to + "  <>< <>< \n" + colors.ENDC)
     mail_server.sendmail(email_from, email_to, text)
     mail_server.quit()
