@@ -33,6 +33,10 @@ def initialize():
 
 def single_phish(email):
     logo_gen()
+    user,mail_server = mail_server_connect()
+    print(user)
+    print(mail_server)
+    break()
     print(colors.GREEN + "\n <>< <><  Sending Phishbot email to " + email + "  <>< <>< \n" + colors.ENDC)
     t = str(round(time.time()))
     f = open("/var/www/html/" + t + ".html", "w")
@@ -71,7 +75,7 @@ def single_phish(email):
     mail_server = smtplib.SMTP(smtp_server, smtp_port)
     mail_server.starttls()
     mail_server.login(email_from, pswd)
-    print(colors.GREEN + "Successfully connected to mail server ... \n" + colors.ENDC)
+    print(colors.GREEN + "Connected to mail server ... \n" + colors.ENDC)
     print(colors.GREEN + "<>< <><  Successfully sent Phishbot email to " + email_to + "  <>< <>< \n" + colors.ENDC)
     mail_server.sendmail(email_from, email_to, text)
     mail_server.quit()
@@ -103,6 +107,19 @@ def get_cred():
     user = lines[0].rstrip("\n")
     password = lines[1].rstrip("\n")
     return(user,password)
+
+def mail_server_connect():
+    user, password = get_cred()
+    smtp_port = 587
+    smtp_server = "smtp.gmail.com"
+    email_from = user
+    pswd = password
+    print(colors.GREEN + "Connecting to mail server ... \n" + colors.ENDC)
+    mail_server = smtplib.SMTP(smtp_server, smtp_port)
+    mail_server.starttls()
+    mail_server.login(email_from, pswd)
+    print(colors.GREEN + "Connected to mail server ... \n" + colors.ENDC)
+    return(user,mail_server)
 
 email,file,report = initialize()
 if email:
