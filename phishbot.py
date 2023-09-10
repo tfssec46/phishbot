@@ -37,7 +37,7 @@ def single_phish(email):
     print(user)
     print(mail_server)
     mail_server.quit()
-    break()
+    sys.exit(0)
     print(colors.GREEN + "\n <>< <><  Sending Phishbot email to " + email + "  <>< <>< \n" + colors.ENDC)
     t = str(round(time.time()))
     f = open("/var/www/html/" + t + ".html", "w")
