@@ -84,7 +84,7 @@ def mail_server_connect():
     return(user,mail_server)
 
 def send_email(user,email,mail_server,url):
-    print(colors.GREEN + " <>< <><  Sending Phishbot email to " + email + "  <>< <>< \n" + colors.ENDC)
+    print(colors.GREEN + " <>< <><  Sending Phishbot email to " + email + "  <>< <>< " + colors.ENDC)
     email_from = user
     email_to = email
     subject = "Organizational Announcement"
