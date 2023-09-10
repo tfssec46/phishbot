@@ -34,11 +34,13 @@ def initialize():
 def single_phish(email):
     logo_gen()
     user,mail_server = mail_server_connect()
+    create_url()
     print(colors.GREEN + "\n <>< <><  Sending Phishbot email to " + email + "  <>< <>< \n" + colors.ENDC)
-    t = str(round(time.time()))
-    f = open("/var/www/html/" + t + ".html", "w")
-    f.write("<html>gotcha!</html>")
-    f.close
+
+#    t = str(round(time.time()))
+#    f = open("/var/www/html/" + t + ".html", "w")
+#    f.write("<html>gotcha!</html>")
+#    f.close
     email_from = user
     email_to = email
     subject = "Organizational Announcement"
@@ -48,7 +50,7 @@ def single_phish(email):
            '<style="color: #FF0000;"><b>Spyder Financial Services</b><br />'
 
     msg = MIMEMultipart()
-    msg['From'] = formataddr(('your best friend', email_from))
+    msg['From'] = formataddr(('John Marshal', email_from))
     msg['To'] = email_to
     msg['Subject'] = subject
     msg.attach(MIMEText(body, 'html'))
@@ -107,6 +109,17 @@ def mail_server_connect():
     mail_server.login(user, pswd)
     print(colors.GREEN + "Connected to mail server ... \n" + colors.ENDC)
     return(user,mail_server)
+
+def send_mail():
+    print("hello world")
+
+def create_url():
+    print(colors.GREEN + "Creating unique url for target ... \n" + colors.ENDC)
+    t = str(round(time.time()))
+    f = open("/var/www/html/" + t + ".html", "w")
+    f.write("<html>gotcha!</html>")
+    f.close
+    print(colors.GREEN + "Created url " + t + ".html \n" + colors.ENDC)
 
 email,file,report = initialize()
 if email:
