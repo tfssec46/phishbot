@@ -35,7 +35,8 @@ def single_phish(email):
     logo_gen()
     user,mail_server = mail_server_connect()
     url = create_url()
-    send_email(user,email,mail_server)
+    email_from, email_to, subject, url, body = send_email(user,email,mail_server,url)
+    create_log(email_from, email_to, subject, url, body)
     #print(colors.GREEN + "\n <>< <><  Sending Phishbot email to " + email + "  <>< <>< \n" + colors.ENDC)
     #email_from = user
     #email_to = email
@@ -102,7 +103,7 @@ def mail_server_connect():
     print(colors.GREEN + "Connected to mail server ... \n" + colors.ENDC)
     return(user,mail_server)
 
-def send_email(user,email,mail_server):
+def send_email(user,email,mail_server,url):
     print(colors.GREEN + "\n <>< <><  Sending Phishbot email to " + email + "  <>< <>< \n" + colors.ENDC)
     email_from = user
     email_to = email
@@ -128,7 +129,8 @@ def send_email(user,email,mail_server):
     text = msg.as_string()
     print(colors.GREEN + "<>< <><  Successfully sent Phishbot email to " + email_to + "  <>< <>< \n" + colors.ENDC)
     mail_server.sendmail(email_from, email_to, text)
-    create_log(email_from, email_to, subject, url, body)
+    return(email_from, email_to, subject, url, body)
+    #create_log(email_from, email_to, subject, url, body)
 
 def create_url():
     print(colors.GREEN + "Creating unique url for target ... \n" + colors.ENDC)
