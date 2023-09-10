@@ -46,7 +46,7 @@ def single_phish(email):
     #user,password = get_cred()
     #smtp_port = 587
     #smtp_server = "smtp.gmail.com"
-    #email_from = user
+    email_from = user
     email_to = email
     #pswd = password
     subject = "Organizational Announcement"
