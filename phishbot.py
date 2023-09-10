@@ -36,11 +36,6 @@ def single_phish(email):
     user,mail_server = mail_server_connect()
     url = create_url()
     print(colors.GREEN + "\n <>< <><  Sending Phishbot email to " + email + "  <>< <>< \n" + colors.ENDC)
-
-#    t = str(round(time.time()))
-#    f = open("/var/www/html/" + t + ".html", "w")
-#    f.write("<html>gotcha!</html>")
-#    f.close
     email_from = user
     email_to = email
     subject = "Organizational Announcement"
@@ -69,11 +64,12 @@ def single_phish(email):
     print(colors.GREEN + "<>< <><  Successfully sent Phishbot email to " + email_to + "  <>< <>< \n" + colors.ENDC)
     mail_server.sendmail(email_from, email_to, text)
     mail_server.quit()
-    logdate = (datetime.now()).strftime("%m/%d/%Y %H:%M:%S")
-    log_output = logdate + " sender=" + email_from + " recipient=" + email_to + " subject=" + subject + " attachment= phishurl=" + url + " body=" + body
-    l = open("/opt/phishbot/log/phishbot.log", "a")
-    l.write(log_output)
-    l.close
+    create_log(email_from, email_to, subject, url, body)
+    #logdate = (datetime.now()).strftime("%m/%d/%Y %H:%M:%S")
+    #log_output = logdate + " sender=" + email_from + " recipient=" + email_to + " subject=" + subject + " attachment= phishurl=" + url + " body=" + body
+    #l = open("/opt/phishbot/log/phishbot.log", "a")
+    #l.write(log_output)
+    #l.close
 
 def multi_phish(file):
     logo_gen()
@@ -122,6 +118,14 @@ def create_url():
     url = "http://3.19.16.86/" + t + ".html"
     print(colors.GREEN + "Created url " + url + " \n" + colors.ENDC)
     return(url)
+
+def create_log(email_from,email_to,subject,url,body):
+    print(colors.GREEN + "Create log entry ... \n" + colors.ENDC)
+    logdate = (datetime.now()).strftime("%m/%d/%Y %H:%M:%S")
+    log_output = logdate + " sender=" + email_from + " recipient=" + email_to + " subject=" + subject + " attachment= phishurl=" + url + " body=" + body
+    l = open("/opt/phishbot/log/phishbot.log", "a")
+    l.write(log_output)
+    l.close
 
 email,file,report = initialize()
 if email:
