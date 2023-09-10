@@ -54,7 +54,7 @@ def multi_phish(file):
     email_list.close()
 
 def create_report():
-    print("generating report")
+    print("generating report.. under maintenance")
 
 def logo_gen():
     print(colors.YELLOW + "                           __    _      __    __          __")
