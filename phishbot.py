@@ -102,7 +102,7 @@ def mail_server_connect():
     print(colors.GREEN + "Connected to mail server ... \n" + colors.ENDC)
     return(user,mail_server)
 
-def send_mail(user,email,mail_server):
+def send_email(user,email,mail_server):
     print(colors.GREEN + "\n <>< <><  Sending Phishbot email to " + email + "  <>< <>< \n" + colors.ENDC)
     email_from = user
     email_to = email
