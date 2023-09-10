@@ -42,7 +42,11 @@ def single_phish(email):
 def multi_phish(file):
     logo_gen()
     print(file)
-    print("sending multiple emails")
+    email_list = open(file, 'r')
+    lines = email_list.readlines()
+    for line in lines:
+        print(line)
+    #print("sending multiple emails")
 
 def create_report():
     print("generating report")
