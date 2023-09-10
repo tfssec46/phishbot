@@ -36,6 +36,7 @@ def single_phish(email):
     user,mail_server = mail_server_connect()
     print(user)
     print(mail_server)
+    mail_server.quit()
     break()
     print(colors.GREEN + "\n <>< <><  Sending Phishbot email to " + email + "  <>< <>< \n" + colors.ENDC)
     t = str(round(time.time()))
